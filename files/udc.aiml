@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <category>
+      <pattern>*</pattern>
+      <template> 
+        <random>
+         <li>Hello, ask me a question?</li>
+         <li>Tell me what you want to know.</li>
+         <li>How can i help you?</li>
+        </random>
+      </template>
+  </category>
+  
+  <!-- topic tag-->
+  <category>
+      <pattern>TALK ABOUT HO CHI MINH CITY</pattern>
+      <template>
+         <think><set name="topic">HCMC</set></think>
+         What do you want to know?
+      </template>
+  </category>
+  
+  <!-- Sử dụng thẻ set, get để tạo biến trả về tên của bạn -->
+  <category>
+      <pattern> MY NAME IS *</pattern>
+      <template> Hi <set name = "username"> <star /></set></template>
+  </category>
+  
+  <category>
+      <pattern>WHAT IS MY NAME</pattern>
+      <template>Your name is <get name ="username"></get></template>
+  </category>
+  
+  <!-- Gõ tell me more để trả lời tiếp tục câu hỏi -->
+  <category>
+      <pattern>WHAT IS YOUR NAME</pattern>
+      <template>My name is Chatbot</template>
+  </category>
+  
+  <category>
+      <pattern>TELL ME MORE</pattern>
+      <that>My name is Chatbot</that>
+      <template>A chatbot is a software or computer program that simulates human conversation or "chatter" through text or voice interactions.</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT IS AIML</pattern>
+      <template>It's Artificial Intelligence Markup Language</template>
+  </category>
+  
+  <category>
+      <pattern>TELL ME WHAT * IS</pattern>
+      <template><srai>WHAT IS <star/> </srai></template>
+  </category>
+  <!-- Random city  -->
+  <category>
+      <pattern>Pick a city</pattern>
+      <template>
+          <random>
+            <li>Ho Chi Minh City</li>
+            <li>Tokyo</li>
+            <li>NewYork</li>
+            <li>Miami</li>
+            <li>Havana</li>
+          </random>
+      </template>
+  </category>
+  <!-- Thẻ điều kiện  -->
+  <category>
+      <pattern>WHERE IS *</pattern>
+      <template>
+         <think> Hi <set name = "city"> <star /></set>></think>
+        <condition name="city" value ="Ho Chi Minh City">HCMC (or Saigon) is in VietNam</condition>
+        <condition name="city" value ="Tokyo">Tokyo is in Japan</condition>
+        <condition name="city" value ="NewYork">NewYork is a city of USA</condition>
+        <condition name="city" value ="Miami">Miami is in USA</condition>
+        <condition name="city" value ="Havana">La Habana is the largest city, capital and one of Cuba's 14 provinces</condition>
+      </template>
+  </category>
+  
+  
+  
+  <topic name="HCMC">
+      <category>
+          <pattern>Introduce about ho chi minh city</pattern>
+          <template>Ho Chi Minh City is the largest city, business and financial hub of Vietnam. Also known as Saigon, it has a prominent history going back hundreds of years. There are plenty of museums showcasing the country's dark wartime history and classic colonial architecture built by former French rulers.</template>
+      </category>
+      <category>
+          <pattern>what is the famous food in saigon</pattern>
+          <template>Pho, banh mi, com tam </template>
+      </category>
+  </topic>
+  
+</aiml>
